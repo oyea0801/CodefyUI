@@ -1088,6 +1088,12 @@ const zhTW: NodeTranslations = {
   ScalarMultiply: {
     description: '把張量的每個元素乘上一個常數',
   },
+  TensorStats: {
+    description: '張量的形狀、最小、最大、平均、總和與標準差，各自輸出並印進 Log；張量本身原樣傳出',
+    params: {
+      precision: 'report 文字的小數位數（純量埠不四捨五入）',
+    },
+  },
 
   // ── Utility ──
   Print: {
