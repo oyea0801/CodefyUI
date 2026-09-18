@@ -22,6 +22,22 @@ received — each links to the release it was published as.
 
 ## [Unreleased]
 
+### Added
+
+- **`TensorStats`: one node that says what a tensor is.** Shape, element
+  count, min, max, mean, sum and population std, each on its own port, plus
+  a one-block `report` that also lands in the Execution Log — so a student
+  sees the numbers on Run with nothing else wired in. The tensor passes
+  through unchanged, so the node drops onto any edge without rewiring what
+  follows. Checking a tensor used to mean a `Mean` wired into a `Print`,
+  deleted again before saving; a problem statement can now say "a
+  TensorStats after MaxPool2d shows mean=0.076823" and that is the whole
+  check. The scalar ports let a judge compare a signature without shipping
+  the full tensor, and let a `GraphOutput` carry one number. `precision`
+  formats only the report; the ports keep full precision. Integer and
+  boolean input is promoted to float32; an empty tensor is refused with
+  its shape in the message.
+
 ## [2.8.2] — 2026-09-17
 
 The node list says what a node does, and a Save As can no longer destroy a
